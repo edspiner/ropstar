@@ -168,7 +168,7 @@ class Leak():
             # this will not use trigger so we have to encode ourselves       
             self.temp_payload = payload + v
             try:
-                s = pwnlib.util.iters.bruteforce(lambda x: self.leak_byte(x), self.bytes, 1, method='fixed')
+                s = pwnlib.util.iters.mbruteforce(lambda x: self.leak_byte(x), self.bytes, 1, method='fixed')
                 v += s
             except TypeError:
                 log.failure("Could not find value")
