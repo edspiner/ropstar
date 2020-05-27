@@ -319,8 +319,10 @@ class Ropstar():
             # we need a marker for successful, non crashing requests to bruteforce values
             self.get_success_marker()
             log.info("Binary uses stack canary")
-            # get offset
-            self.get_dynamic()
+
+            # get offset if not provided from cmd line
+            if self.offset == -1:
+                self.get_dynamic()
 
             if self.offset == -1:
                 log.failure("Can't continue without offset, consider providing it with -o <offset>")
